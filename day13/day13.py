@@ -17,14 +17,13 @@ def plot_em(points):
     plot = [[' ' for i in range(max_x)] for j in range(max_y)]
     for p in points:
         plot[p['y']][p['x']] = '#'
-    print("\n".join(''.join(r) for r in plot))
-    print()
+    return "\n".join(''.join(r) for r in plot) + '\n'
 
 def solve_part1(points, folds):
     return len(fold_em(points, folds[0:1]))
 
 def solve_part2(points, folds):
-    plot_em(fold_em(points, folds))
+    return plot_em(fold_em(points, folds))
     
 def doit(inputfile):
     with open(inputfile,'r') as f:
@@ -43,7 +42,7 @@ def doit(inputfile):
                 points.append({'x':int(x),'y':int(y)})
 
     print(solve_part1(points[:], folds))
-    solve_part2(points[:], folds)
+    print(solve_part2(points[:], folds))
 
 doit('test.txt')
 doit('input.txt')
@@ -63,4 +62,5 @@ doit('input.txt')
 #  # #     #   ###  #    #    #### #  #
 #  # #  # #    # #  #  # #    #  # #  #
 ###   ##  #### #  #  ##  #### #  # ###
+
 """
